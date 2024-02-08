@@ -9,8 +9,8 @@ body {
 }
 
 img {
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
 }
 
 .board {
@@ -22,4 +22,14 @@ img {
   border: solid 1px white;
   cursor: pointer;
   background-color: #070668;
+}
+
+.scores {
+  display: flex;
+  justify-content: center;
+}
+
+h4 {
+  margin-left: 50px;
+  margin-right: 50px;
 }
