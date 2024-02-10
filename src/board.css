@@ -14,14 +14,24 @@ img {
 }
 
 .board {
-  display: grid;
-  grid-template-columns: repeat(5, auto);
+  /* display: grid;
+  grid-template-columns: repeat(5, auto); */
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .card {
   border: solid 1px white;
   cursor: pointer;
   background-color: #070668;
+}
+
+.card:hover {
+  background-color: white;
+  color: black;
 }
 
 .scores {
@@ -32,4 +42,35 @@ img {
 h4 {
   margin-left: 50px;
   margin-right: 50px;
+}
+
+button {
+  margin-top: 50px;
+  background-color: #ffcb05;
+  border: solid 1px white;
+}
+
+p {
+  border: solid 1px white;
+}
+
+h4 {
+  padding: 10px;
+  border-radius: 10px;
+  border: solid 1px white;
+}
+
+.score {
+  background-color: #007bff;
+}
+
+.high-score {
+  background-color: #009f50;
+}
+
+@media (max-width: 600px) {
+  img {
+    width: 70px;
+    height: 70px;
+  }
 }

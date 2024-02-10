@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
 import "/src/board.css";
 import { shuffle } from "./shuffle";
+import { Audio } from "react-loader-spinner";
 
 export function Board() {
   const [pokemons, setPokemons] = useState([]);
   const [points, setPoints] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [list, setList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * (600 - 20 + 1)) + 20;
 
     const getPokemons = async () => {
+      setIsLoading(true);
       const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?offset=${random}&limit=10`
+        `https://pokeapi.co/api/v2/pokemon?offset=${random}&limit=12`
       );
       const listPokemons = await response.json();
       const { results } = listPokemons;
@@ -28,33 +31,42 @@ export function Board() {
         };
       });
       setPokemons(await Promise.all(newPokemons));
+      setIsLoading(false);
     };
     getPokemons();
   }, []);
 
   function handleClick(pokemonName) {
+    console.log(pokemonName);
     const changes = shuffle([...pokemons]);
     setPokemons(changes);
-    setPoints(points + 1);
-    console.log(pokemonName);
 
     if (list.includes(pokemonName)) {
-      setHighScore(points);
-      location.reload();
-      console.log("HELLO");
+      if (highScore < points) {
+        setHighScore(points);
+      }
+      setPoints(0);
+      setList([]);
+      return;
     }
 
-    setList(pokemonName);
+    setPoints(points + 1);
     console.log(list);
+    setList([...list, pokemonName]);
+  }
+
+  function reload() {
+    location.reload();
   }
 
   return (
     <>
       <div className="scores">
-        <h4>Score: {points}</h4>
-        <h4>High score: 0</h4>
+        <h4 className="score">Score: {points}</h4>
+        <h4 className="high-score">High score: {highScore}</h4>
       </div>
       <div className="board">
+        {isLoading ? <Audio /> : null}
         {pokemons.map((pokemon) => (
           <div
             className="card"
@@ -62,10 +74,13 @@ export function Board() {
             onClick={() => handleClick(pokemon.name)}
           >
             <img src={pokemon.img} alt={pokemon.name} />
-            <p className="card-text">{pokemon.name}</p>
+            <p className="card-text">
+              {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+            </p>
           </div>
         ))}
       </div>
+      <button onClick={reload}>Click here to change the pokemons!</button>
     </>
   );
 }
