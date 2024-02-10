@@ -16,7 +16,7 @@ export function Board() {
     const getPokemons = async () => {
       setIsLoading(true);
       const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?offset=${random}&limit=12`
+        `https://pokeapi.co/api/v2/pokemon?offset=${random}&limit=20`
       );
       const listPokemons = await response.json();
       const { results } = listPokemons;

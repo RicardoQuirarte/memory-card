@@ -73,9 +73,12 @@ h4 {
   padding: 2px;
 }
 
-/* @media (max-width: 600px) {
+@media (max-width: 1200px) {
   img {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
   }
-} */
+  .card-text {
+    width: 75px;
+  }
+}
