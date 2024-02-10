@@ -75,10 +75,10 @@ h4 {
 
 @media (max-width: 1200px) {
   img {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
   }
   .card-text {
-    width: 75px;
+    width: 85px;
   }
 }
