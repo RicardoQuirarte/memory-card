@@ -7,7 +7,7 @@ import { Board } from "./Board.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <img
-      src="/src/assets/pokemon.svg"
+      src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
       alt="pokemon"
       style={{ width: "300px" }}
     />

@@ -68,9 +68,14 @@ h4 {
   background-color: #009f50;
 }
 
-@media (max-width: 600px) {
+.card-text {
+  width: 125px;
+  padding: 2px;
+}
+
+/* @media (max-width: 600px) {
   img {
     width: 70px;
     height: 70px;
   }
-}
+} */
